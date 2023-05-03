@@ -46,6 +46,7 @@ This example simulates the 4 polarization- and azimuth-resolved IRAS spectra wit
 <br>
 The Kramers–Kronig relations are used on the adsorbate k parameters (imaginary part of the complex index of refraction) to get the real part of the complex index of refraction for the adsorbate layer. The simulation then applies the three-layer (substrate-adsorbate-vacuum) model to simulate the 4 polarization- and azimuth-resolved IRAS spectra.
 <br>
+<br>
 The input adsorbate k parameters and 4 polarization- and azimuth-resolved simulated IRAS spectra are plotted below:
 <br>
 <br>
@@ -62,6 +63,7 @@ This example regresses the adsorbate k parameters k(x), k(y), k(y) by comparing 
 6) adsorbate film thickness
 <br>
 The Kramers–Kronig relations are used on the regressed adsorbate k parameters (imaginary part of the complex index of refraction) to get the real part of the complex index of refraction for the adsorbate layer. The simulation then applies the three-layer (substrate-adsorbate-vacuum) model to simulate the 4 polarization- and azimuth-resolved IRAS spectra. First, the simulation regresses the adsorbate k(y) and k(x) parameters to the s(y) and s(x) experimental IRAS spectra. Second, the simulation regresses the adsorbate k(z) parameters to the p(xz) and p(yz) experimental IRAS spectra. Finally, the simulation regresses the adsorbate k(x), k(y) and k(z) parameters to the s(y), p(xz), s(x), p(yz) experimental IRAS spectra.
+<br>
 <br>
 The regressed adsorbate k parameters and 4 polarization- and azimuth-resolved (solid) simulated and (dots) experimental IRAS spectra are plotted below:
 <br>
