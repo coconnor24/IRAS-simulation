@@ -1,6 +1,6 @@
 # simulateIRAS
 ## Description
-A python package for simulating spectra and determining extinction coefficients for polarization- and azimuth-resolved infrared reflection absorption spectroscopy (IRAS) measurements for non-magnetic substrates. The simulations current utilize a three-layer (vacuum-adsorbate-substrate) model derived according to [1] and implemented in [2].
+A python package for simulating spectra and determining extinction coefficients for polarization- and azimuth-resolved infrared reflection absorption spectroscopy (IRAS) measurements for non-magnetic substrates. The current simulations utilize a three-layer (vacuum-adsorbate-substrate) model derived according to [1] and implemented in [2].
 <br> <br> <br>
 <img src='./images/IRAS_Model_3_Layer.png' width='50%'>
 <br> <br>
@@ -23,6 +23,15 @@ $\epsilon^{a}\_{x} =$ dielectric constant of the adsorbate film along the x-axis
 $\epsilon^{a}\_{y} =$ dielectric constant of the adsorbate film  along the y-axis (in substrate plane orthogonal to incident light) <br>
 $\epsilon^{a}\_{z} =$ dielectric constant of the adsorbate film  along the z-axis (normal to substrate plane) <br>
 $\epsilon^{v} =$ dielectric constant of the vacuum which is isotropic <br>
+$\tilde{\epsilon}^{i}\_{j} =$ a complex dielectric constant for layer i along axis j
+<br>
+<br>
+The complex index of refraction is related to the complex dielectric constant by: <br>
+$$\tilde{\epsilon}^{i}\_{j} = (\tilde{n}^{i}\_{j})^{2}$$ <br>
+<br>
+Where: <br>
+$n =$ complex index of fraction for layer i along axis j<br>
+$\tilde{\epsilon}^{i}\_{j} =$ complex dielectric constant for layer i along axis j<br>
 <br>
 
 ## Installation
@@ -62,7 +71,7 @@ This example regresses the adsorbate k parameters k(x), k(y), k(y) by comparing 
 5) real index of refraction of the adsorbate layer in the infinite wavenumber simulation limit which here is taken as $Real(n) = 1.37$ for a water film
 6) adsorbate film thickness
 <br>
-The Kramers–Kronig relations are used on the regressed adsorbate k parameters (imaginary part of the complex index of refraction) to get the real part of the complex index of refraction for the adsorbate layer. The simulation then applies the three-layer (substrate-adsorbate-vacuum) model to simulate the 4 polarization- and azimuth-resolved IRAS spectra. First, the simulation regresses the adsorbate k(y) and k(x) parameters to the s(y) and s(x) experimental IRAS spectra. Second, the simulation regresses the adsorbate k(z) parameters to the p(xz) and p(yz) experimental IRAS spectra. Finally, the simulation regresses the adsorbate k(x), k(y) and k(z) parameters to the s(y), p(xz), s(x), p(yz) experimental IRAS spectra.
+The Kramers–Kronig relations are used on the regressed adsorbate k parameters (imaginary part of the complex index of refraction) to get the real part of the complex index of refraction for the adsorbate layer. The simulation then applies the three-layer (substrate-adsorbate-vacuum) model to simulate the 4 polarization- and azimuth-resolved IRAS spectra. First, the simulation regresses the adsorbate k(y) and k(x) parameters to the s(y) and s(x) experimental IRAS spectra. Second, the simulation regresses the adsorbate k(z) parameters to the p(xz) and p(yz) experimental IRAS spectra. For these two steps, the regression works by adding to k(i) a Lorentzian (FWHM = 1) with a random position, small amplitude and sign and only accepting the new k(i) if the fit to the spectra(s) is better. Finally, the simulation regresses the adsorbate k(x), k(y) and k(z) parameters to fits of all the s(y), p(xz), s(x), p(yz) experimental IRAS spectra. For this step, the regression works by adding to a random k(i) a Lorentzian (FWHM = 1) with a random position, small amplitude and sign and only accepting the new k(i) if the total fit to all 4 spectra is better. For all regression steps there is a cutoff parameter which determines how much better a fit needs to be in order for the new test k(i) parameter to be accepted.
 <br>
 <br>
 The regressed adsorbate k parameters and 4 polarization- and azimuth-resolved (solid) simulated and (dots) experimental IRAS spectra are plotted below:
